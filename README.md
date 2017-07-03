@@ -5,6 +5,7 @@ A searchable web frontend for devops weekly content (TODO)
 
 Starting from here to pull in markdown and turn into python objects - [Link](https://stackoverflow.com/questions/40945364/parsing-elements-from-a-markdown-file-in-python-3)
 
+```
 import io
 import pypandoc
 import panflute
@@ -25,3 +26,4 @@ if __name__ == '__main__':
     print("\nList of image URLs:")
     for image in doc.images:
         print(image.url)
+```
