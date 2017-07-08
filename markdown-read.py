@@ -1,20 +1,16 @@
 import io
-import pypandoc
-import panflute
+import md2py
 
-def action(elem, doc):
-    if isinstance(elem, panflute.Image):
-        doc.images.append(elem)
-    elif isinstance(elem, panflute.Link):
-        doc.links.append(elem)
+# Get content of the markdown file
+markdown = open("exampleissue.md", "r")
+content = markdown.read()
 
-if __name__ == '__main__':
-    data = pypandoc.convert_file('example.md', 'json')
-    doc = panflute.load(io.StringIO(data))
-    doc.images = []
-    doc.links = []
-    doc = panflute.run_filter(action, prepare=prepare, doc=doc)
+toc = md2py.md2py(content)
+for item in toc:
+    print(item)
 
-    print("\nList of image URLs:")
-    for image in doc.images:
-        print(image.url)
+
+#>>> toc.h1
+#Chikin Tales
+#>>> str(toc.h1)
+#'Chikin Tales'
